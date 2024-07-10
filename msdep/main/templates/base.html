@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{PageName}}</title>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.css"
+          rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body fixed-top">
+        <div class="container-fluid">
+            <button
+                    data-mdb-collapse-init
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-target="#navbarExample01"
+                    aria-controls="navbarExample01"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarExample01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" aria-current="page" href="/">Головна</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/news">Новини</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/galery">Галерея</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/docs">Документи</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Контакти</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Background image -->
+    <div
+            class="p-5 text-center bg-image"
+            style="
+      background-image: url('https://photos.wikimapia.org/p/00/06/58/91/40_big.jpg');
+      height: 400px;
+      margin-top: 58px;
+    "
+    >
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                    <h1 class="mb-3">Управління національно-патріотичного виховання, молоді та спорту</h1>
+                    <h4 class="mb-3">Житомирської обласної військової адміністрaції</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Background image -->
+</header>
+<div>
+    <h2 class="d-flex justify-content-around mt-5">Останні новини</h2>
+</div>
+<div class="d-flex justify-content-around flex-wrap mt-3">
+    {% for i in news %}
+    <div class="card">
+        <img src="{{image[news].path.urls}}" class="card-img-top"
+             alt="Fissure in Sandstone"/>
+        <div class="card-body">
+            <h5 class="card-title">{{i.name}}</h5>
+            <p class="card-text">{{i.date}}</p>
+            <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Читати</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div>
+    <h2 class="d-flex justify-content-around mt-5">Останні фото</h2>
+</div>
+<!-- Carousel wrapper -->
+<div id="ImagesSector" class="carousel slide carousel-fade" data-mdb-ride="carousel" data-mdb-carousel-init>
+    <!-- Indicators -->
+    % for i in ImageCount%}
+    <div class="carousel-indicators">
+        <button
+                type="button"
+                data-mdb-target="#ImagesSector"
+                data-mdb-slide-to="{{i}}"
+                class="active"
+                aria-current="true"
+                aria-label="Slide {{i+1}}"
+        ></button>
+    </div>
+
+    {% endfor %}
+
+    <!-- Inner -->
+    <div class="carousel-inner">
+        {%for i in LastImages%}
+        <!-- Single item -->
+        <div class="carousel-item active">
+            <img src="{{i.path.url}}" class="d-block w-100" alt="Sunset Over the City"/>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>{{i.related_news.name}}</h5>
+                <p>{{i.date}}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-mdb-target="#ImagesSector"
+                data-mdb-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-mdb-target="#ImagesSector"
+                data-mdb-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- Carousel wrapper -->
+    <div>
+        <h2 class="d-flex justify-content-around mt-5">Залишились питання?</h2>
+    </div>
+    <div class="d-flex justify-content-center flex-wrap m-3 ">
+        <div class="p-3">
+            <form style="width: 26rem;">
+                <!-- Name input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" id="form4Example1" class="form-control"/>
+                    <label class="form-label" for="form4Example1">Name</label>
+                </div>
+
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="email" id="form4Example2" class="form-control"/>
+                    <label class="form-label" for="form4Example2">Email address</label>
+                </div>
+
+                <!-- Message input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+                    <label class="form-label" for="form4Example3">Message</label>
+                </div>
+                <!-- Submit button -->
+                <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block mb-4">Send</button>
+            </form>
+        </div>
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1117.8062475814413!2d28.664341329162998!3d50.25317856300385!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472c6490c204be9b%3A0xd3b31d5aa2d96ec4!2z0LzQsNC50LTQsNC9INChLtCfLiDQmtC-0YDQvtC70ZHQstCwLCAxLCDQltC40YLQvtC80LjRgCwg0JbQuNGC0L7QvNC40YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgMTAwMDE!5e0!3m2!1sru!2sua!4v1720605087473!5m2!1sru!2sua"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Company name
+          </h6>
+          <p>
+            Here you can use rows and columns to organize your footer content. Lorem ipsum
+            dolor sit amet, consectetur adipisicing elit.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Angular</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">React</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Vue</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Laravel</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Pricing</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Settings</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Orders</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Help</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+    <!-- MDB -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js"></script>
+</body>
+</html>
